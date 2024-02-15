@@ -15,9 +15,6 @@ struct SwiftUIView: View {
             ScrollView {
                 cards
             }
-            Spacer()
-            cardsCountAdjuster
-            
         }
         .padding()
     }
