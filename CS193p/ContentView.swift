@@ -64,3 +64,23 @@ struct ContentView: View {
     ContentView()
         .modelContainer(for: Item.self, inMemory: true)
 }
+struct ShimmerView: View {
+    @State private var gradientStart: UnitPoint = .leading
+    @State private var gradientEnd: UnitPoint = .trailing
+
+    var body: some View {
+        Rectangle()
+            .fill(
+                LinearGradient(
+                    gradient: Gradient(colors: [Color.white.opacity(0.75), Color.white, Color.white.opacity(0.75)]),
+                    startPoint: gradientStart,
+                    endPoint: gradientEnd
+                )
+            )
+            .animation(Animation.linear(duration: 1.25).repeatForever(autoreverses: false))
+            .onAppear {
+                self.gradientStart = .trailing
+                self.gradientEnd = .leading
+            }
+    }
+}
