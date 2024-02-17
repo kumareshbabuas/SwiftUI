@@ -23,9 +23,10 @@ struct CS193pApp: App {
         }
     }()
 
+    @StateObject var game = EmojiMemoryGame()
     var body: some Scene {
         WindowGroup {
-            SwiftUIView()
+            EmojiMemoryGameView(viewModel: game)
         }
         .modelContainer(sharedModelContainer)
     }
